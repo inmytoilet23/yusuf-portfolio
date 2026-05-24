@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>YUSUF.M — Graphic Designer</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet"/>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --black:   #080808;
+  --black2:  #0e0e0e;
+  --black3:  #141414;
+  --lime:    #c8f135;
+  --lime2:   #a8d120;
+  --white:   #f0ebe0;
+  --dim:     #686460;
+  --dim2:    #888480;
+  --border:  rgba(255,255,255,0.07);
+}
+.svc-icon svg { width: 22px; height: 22px; color: var(--lime); }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+/* ── GRAIN TEXTURE ── */
+body::after {
+  content: '';
+  position: fixed; inset: 0;
+  pointer-events: none; z-index: 9999;
+  opacity: 0.032;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 220px 220px;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 0 6vw; height: 58px;
+  background: rgba(8,8,8,0.88);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.25rem; letter-spacing: .14em;
+  color: var(--lime); text-decoration: none;
+}
+.nav-links { display: flex; gap: 2.5rem; list-style: none; align-items: center; }
+.nav-links a {
+  color: var(--dim2); text-decoration: none;
+  font-size: .72rem; font-weight: 500;
+  letter-spacing: .12em; text-transform: uppercase;
+  transition: color .2s;
+}
+.nav-links a:hover { color: var(--white); }
+.nav-hire {
+  background: var(--lime); color: #000 !important;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: .9rem; letter-spacing: .1em;
+  padding: 7px 22px;
+  transition: background .2s !important;
+}
+.nav-hire:hover { background: var(--lime2) !important; }
+
+/* ── HERO ── */
+#hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 58px 6vw 0;
+  position: relative; overflow: hidden;
+}
+
+/* oversized background "YUSUF" */
+.hero-bg-word {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -52%);
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(160px, 28vw, 340px);
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255,255,255,0.04);
+  white-space: nowrap;
+  pointer-events: none; user-select: none;
+  letter-spacing: .06em;
+}
+
+/* subtle lime glow top-right */
+.hero-glow {
+  position: absolute;
+  top: -10%; right: -5%;
+  width: 55vw; height: 55vw;
+  background: radial-gradient(circle, rgba(200,241,53,0.055) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.hero-inner { position: relative; z-index: 2; }
+
+.hero-avail {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: .68rem; font-weight: 600;
+  letter-spacing: .16em; text-transform: uppercase;
+  color: var(--lime); margin-bottom: 1.6rem;
+}
+.hero-avail::before {
+  content: '';
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--lime);
+  animation: blink 1.8s ease infinite;
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:.25} }
+
+h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(80px, 13.5vw, 190px);
+  line-height: .88; letter-spacing: .015em;
+  color: var(--white); margin-bottom: 0;
+}
+h1 .accent { color: var(--lime); }
+
+.hero-bottom {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 3rem; align-items: end;
+  padding: 2.5rem 0 4rem;
+  border-top: 1px solid var(--border);
+  margin-top: 2.2rem;
+}
+.hero-desc {
+  font-size: .95rem; color: var(--dim2);
+  line-height: 1.8; max-width: 420px;
+}
+.hero-right { display: flex; flex-direction: column; align-items: flex-end; gap: 1.5rem; }
+
+.hero-btns { display: flex; gap: .75rem; flex-wrap: wrap; justify-content: flex-end; }
+.btn-primary {
+  background: var(--lime); color: #000;
+  font-weight: 600; font-size: .85rem;
+  letter-spacing: .04em;
+  padding: 13px 28px; border-radius: 100px;
+  text-decoration: none;
+  transition: background .2s, transform .2s;
+}
+.btn-primary:hover { background: var(--lime2); transform: translateY(-2px); }
+.btn-secondary {
+  background: transparent; color: var(--white);
+  font-weight: 500; font-size: .85rem;
+  letter-spacing: .04em;
+  padding: 13px 28px; border-radius: 100px;
+  border: 1.5px solid rgba(255,255,255,0.25);
+  text-decoration: none;
+  transition: border-color .2s, color .2s, transform .2s;
+}
+.btn-secondary:hover { border-color: var(--lime); color: var(--lime); transform: translateY(-2px); }
+
+.hero-tags { display: flex; gap: .6rem; flex-wrap: wrap; justify-content: flex-end; }
+.hero-tag-pill {
+  font-size: .7rem; font-weight: 500;
+  letter-spacing: .06em;
+  color: var(--dim2);
+  border: 1px solid var(--border);
+  padding: 5px 14px; border-radius: 100px;
+}
+
+/* ── MARQUEE ── */
+.marquee {
+  overflow: hidden;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 12px 0;
+  background: var(--black2);
+}
+.marquee-track {
+  display: flex; animation: mq 24s linear infinite; white-space: nowrap;
+}
+.mq-item {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1rem; letter-spacing: .12em;
+  color: rgba(240,235,224,.2); padding: 0 2rem; flex-shrink: 0;
+}
+.mq-dot { color: var(--lime) !important; opacity: .7; }
+@keyframes mq { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+/* ── SECTION SHARED ── */
+.section { padding: 100px 6vw; }
+.section-top {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  margin-bottom: 3.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--border);
+}
+.s-label {
+  font-size: .68rem; font-weight: 600;
+  letter-spacing: .18em; text-transform: uppercase;
+  color: var(--lime); margin-bottom: .8rem;
+}
+.s-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(42px, 7vw, 88px);
+  letter-spacing: .03em; line-height: 1;
+}
+.s-count {
+  font-family: 'Playfair Display', serif;
+  font-style: italic; font-size: 3.5rem;
+  color: rgba(255,255,255,.06); line-height: 1;
+}
+
+/* ── SELECTED WORKS ── */
+#works { padding-bottom: 100px; }
+#works .section-top { padding: 0 6vw; padding-bottom: 2rem; margin-bottom: 0; }
+
+.works-header { padding: 80px 6vw 0; }
+
+.works-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1.5px;
+  background: rgba(255,255,255,0.06);
+  margin-top: 1.5px;
+}
+
+.work-card {
+  background: var(--black2);
+  overflow: hidden; position: relative; cursor: pointer;
+}
+.work-card:hover .wc-img { transform: scale(1.04); }
+.work-card:hover .wc-hover { opacity: 1; }
+
+/* grid placement */
+.wc-1 { grid-column: 1/8; }
+.wc-2 { grid-column: 8/13; }
+.wc-3 { grid-column: 1/6; }
+.wc-4 { grid-column: 6/13; }
+
+.wc-img-wrap { overflow: hidden; position: relative; }
+.wc-img {
+  width: 100%; display: block;
+  aspect-ratio: 16/10; object-fit: cover;
+  transition: transform .5s ease;
+}
+.wc-1 .wc-img { aspect-ratio: 16/10; }
+.wc-2 .wc-img { aspect-ratio: 4/3; }
+.wc-3 .wc-img { aspect-ratio: 4/3; }
+.wc-4 .wc-img { aspect-ratio: 16/10; }
+
+/* placeholder image bg colors */
+.wc-img.p1 { background: #0e1520; }
+.wc-img.p2 { background: #180e1a; }
+.wc-img.p3 { background: #0e1e12; }
+.wc-img.p4 { background: #1a1500; }
+
+/* placeholder content */
+.wc-img-inner {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column; gap: 12px;
+}
+.wc-placeholder-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(60px, 10vw, 120px);
+  color: rgba(255,255,255,.04);
+  letter-spacing: .06em; line-height: 1;
+}
+.wc-placeholder-hint {
+  font-size: .65rem; letter-spacing: .12em;
+  text-transform: uppercase; color: rgba(255,255,255,.12);
+}
+
+.wc-hover {
+  position: absolute; inset: 0;
+  background: rgba(8,8,8,.6);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; transition: opacity .3s;
+}
+.wc-hover-label {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: .9rem; letter-spacing: .2em;
+  color: var(--lime); border: 1px solid var(--lime);
+  padding: 10px 24px;
+}
+
+.wc-info {
+  padding: 1.4rem 1.6rem 1.6rem;
+  border-top: 1px solid var(--border);
+  display: flex; justify-content: space-between; align-items: flex-end;
+}
+.wc-meta { flex: 1; }
+.wc-cat {
+  font-size: .65rem; font-weight: 600;
+  letter-spacing: .14em; text-transform: uppercase;
+  color: var(--lime); margin-bottom: .4rem;
+}
+.wc-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.35rem; letter-spacing: .04em;
+  color: var(--white); line-height: 1.1;
+}
+.wc-year {
+  font-size: .72rem; font-weight: 300;
+  color: var(--dim); letter-spacing: .06em;
+  flex-shrink: 0; padding-left: 1rem;
+}
+
+/* ── ABOUT ── */
+#about { background: var(--black2); border-top: 1px solid var(--border); }
+.about-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 6vw; }
+.about-text p {
+  font-size: .96rem; color: var(--dim2);
+  line-height: 1.88; margin-bottom: 1rem;
+}
+.about-text strong { color: var(--white); }
+.about-quote {
+  margin-top: 2.5rem;
+  padding: 1.5rem 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.about-quote p {
+  font-family: 'Playfair Display', serif;
+  font-style: italic; font-size: 1.15rem;
+  line-height: 1.55; color: rgba(240,235,224,.65);
+}
+.tools-label {
+  font-size: .65rem; font-weight: 600;
+  letter-spacing: .16em; text-transform: uppercase;
+  color: var(--dim); margin-bottom: .8rem; margin-top: 2rem;
+  padding-bottom: .5rem;
+  border-bottom: 1px solid var(--border);
+}
+.tools-chips { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 1.5rem; }
+.tc {
+  font-size: .78rem; font-weight: 400;
+  color: var(--dim2); border: 1px solid var(--border);
+  padding: 5px 14px;
+  transition: border-color .2s, color .2s; cursor: default;
+}
+.tc:hover { border-color: var(--lime); color: var(--lime); }
+.stats-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 1px; background: var(--border);
+  border: 1px solid var(--border); margin-top: 2.5rem;
+}
+.stat-cell { background: var(--black2); padding: 1.3rem 1.4rem; }
+.stat-n {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.6rem; letter-spacing: .04em;
+  color: var(--white); line-height: 1;
+}
+.stat-l {
+  font-size: .66rem; font-weight: 500;
+  letter-spacing: .1em; text-transform: uppercase;
+  color: var(--dim); margin-top: 4px;
+}
+
+/* ── EXPERIENCE ── */
+#experience { border-top: 1px solid var(--border); }
+.exp-list { margin-top: 0; }
+.exp-row {
+  display: grid; grid-template-columns: 64px 180px 1fr auto;
+  gap: 2rem; align-items: start;
+  padding: 2.2rem 0;
+  border-bottom: 1px solid var(--border);
+  transition: background .2s;
+}
+.exp-row:hover { background: rgba(255,255,255,.015); }
+.exp-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1rem; letter-spacing: .1em;
+  color: rgba(255,255,255,.12); padding-top: 3px;
+}
+.exp-yr {
+  font-size: .72rem; font-weight: 500;
+  letter-spacing: .06em; color: var(--dim);
+  padding-top: 4px; line-height: 1.5;
+}
+.exp-co {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.45rem; letter-spacing: .04em;
+  color: var(--white); line-height: 1; margin-bottom: .3rem;
+}
+.exp-role {
+  font-size: .7rem; font-weight: 600;
+  letter-spacing: .12em; text-transform: uppercase;
+  color: var(--lime); margin-bottom: .6rem;
+}
+.exp-desc { font-size: .84rem; color: var(--dim); line-height: 1.72; }
+.exp-badge {
+  font-size: .62rem; font-weight: 600;
+  letter-spacing: .1em; text-transform: uppercase;
+  color: var(--dim); border: 1px solid var(--border);
+  padding: 4px 10px; white-space: nowrap; margin-top: 4px;
+}
+
+/* ── SERVICES ── */
+#services { background: var(--black2); border-top: 1px solid var(--border); }
+.services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); }
+.svc-card {
+  background: var(--black2); padding: 2.5rem 2rem;
+  position: relative; overflow: hidden;
+  transition: background .25s;
+}
+.svc-card:hover { background: var(--black3); }
+.svc-card:hover .svc-num { opacity: .1; }
+.svc-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 5rem; color: rgba(255,255,255,.04);
+  line-height: 1; margin-bottom: .5rem;
+  transition: opacity .25s;
+  letter-spacing: .04em;
+}
+.svc-icon {
+  width: 40px; height: 40px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+}
+.svc-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.5rem; letter-spacing: .04em;
+  color: var(--white); margin-bottom: .8rem;
+}
+.svc-desc {
+  font-size: .84rem; color: var(--dim);
+  line-height: 1.78; margin-bottom: 1.5rem;
+}
+.svc-list {
+  list-style: none;
+  display: flex; flex-direction: column; gap: .4rem;
+}
+.svc-list li {
+  font-size: .75rem; color: var(--dim2);
+  letter-spacing: .04em;
+  padding-left: 14px; position: relative;
+}
+.svc-list li::before {
+  content: '→';
+  position: absolute; left: 0;
+  color: var(--lime); font-size: .7rem;
+}
+
+/* ── CONTACT ── */
+#contact { text-align: center; border-top: 1px solid var(--border); }
+.ct-big {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(56px, 11vw, 150px);
+  line-height: .9; letter-spacing: .02em;
+  color: var(--white); margin-bottom: 2rem;
+}
+.ct-big .accent { color: var(--lime); }
+.ct-sub {
+  font-size: .96rem; color: var(--dim2);
+  max-width: 400px; margin: 0 auto 3rem;
+  line-height: 1.78;
+}
+.ct-email {
+  display: inline-block; font-size: clamp(1rem, 1.8vw, 1.3rem);
+  font-weight: 300; color: var(--white);
+  text-decoration: none; letter-spacing: .02em;
+  border-bottom: 1px solid rgba(200,241,53,.35);
+  padding-bottom: 4px;
+  transition: color .2s, border-color .2s;
+}
+.ct-email:hover { color: var(--lime); border-color: var(--lime); }
+.ct-links {
+  display: flex; justify-content: center;
+  gap: 1rem; flex-wrap: wrap; margin-top: 3rem;
+}
+.ct-link {
+  display: flex; align-items: center; gap: 10px;
+  padding: 12px 24px;
+  border: 1px solid var(--border);
+  color: var(--dim2); text-decoration: none;
+  font-size: .82rem; font-weight: 500; letter-spacing: .04em;
+  transition: border-color .2s, color .2s;
+}
+.ct-link:hover { border-color: rgba(200,241,53,.4); color: var(--lime); }
+.ct-link svg { width: 15px; height: 15px; flex-shrink: 0; }
+
+/* ── LIGHTBOX ── */
+#lightbox {
+  position: fixed; inset: 0; z-index: 1000;
+  background: rgba(0,0,0,0);
+  display: flex; align-items: center; justify-content: center;
+  padding: 5vw;
+  pointer-events: none;
+  transition: background .3s;
+}
+#lightbox.active {
+  background: rgba(0,0,0,.88);
+  pointer-events: all;
+}
+.lb-box {
+  position: relative;
+  max-width: 900px; width: 100%;
+  opacity: 0; transform: scale(.94) translateY(18px);
+  transition: opacity .35s ease, transform .35s ease;
+}
+#lightbox.active .lb-box {
+  opacity: 1; transform: scale(1) translateY(0);
+}
+.lb-img {
+  width: 100%; display: block;
+  max-height: 70vh; object-fit: contain;
+  background: var(--black3);
+}
+.lb-placeholder {
+  width: 100%; aspect-ratio: 16/10;
+  background: var(--black3);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--dim); font-size: .8rem;
+  letter-spacing: .12em; text-transform: uppercase;
+}
+.lb-footer {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  padding: 1.2rem 0 0;
+  border-top: 1px solid var(--border);
+  margin-top: 2px;
+}
+.lb-cat {
+  font-size: .62rem; font-weight: 600;
+  letter-spacing: .16em; text-transform: uppercase;
+  color: var(--lime); margin-bottom: .3rem;
+}
+.lb-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.8rem; letter-spacing: .04em; color: var(--white);
+}
+.lb-year {
+  font-size: .72rem; color: var(--dim); letter-spacing: .06em;
+}
+.lb-close {
+  position: absolute; top: -44px; right: 0;
+  background: none; border: none; cursor: pointer;
+  color: var(--dim2); font-size: 1.4rem;
+  display: flex; align-items: center; gap: 8px;
+  font-size: .72rem; letter-spacing: .12em;
+  text-transform: uppercase; font-family: 'Inter', sans-serif;
+  font-weight: 500; padding: 8px 0;
+  transition: color .2s;
+}
+.lb-close:hover { color: var(--white); }
+.lb-close svg { width: 18px; height: 18px; }
+
+/* ── FOOTER ── */
+footer {
+  padding: 1.6rem 6vw;
+  border-top: 1px solid var(--border);
+  display: flex; justify-content: space-between;
+  align-items: center; flex-wrap: wrap; gap: 1rem;
+}
+footer p { font-size: .72rem; color: rgba(240,235,224,.18); letter-spacing: .06em; }
+footer span { color: var(--lime); }
+
+/* ── REVEAL ANIMATION ── */
+.reveal { opacity: 0; transform: translateY(22px); transition: opacity .65s ease, transform .65s ease; }
+.reveal.in { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: .1s; }
+.reveal-delay-2 { transition-delay: .2s; }
+.reveal-delay-3 { transition-delay: .3s; }
+
+/* ── HAMBURGER ── */
+.nav-burger {
+  display: none;
+  flex-direction: column; justify-content: center; gap: 5px;
+  width: 36px; height: 36px; cursor: pointer;
+  background: none; border: none; padding: 4px;
+}
+.nav-burger span {
+  display: block; height: 1.5px; width: 100%;
+  background: var(--white);
+  transition: transform .3s, opacity .3s;
+}
+.nav-burger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.nav-burger.open span:nth-child(2) { opacity: 0; }
+.nav-burger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+/* mobile drawer */
+.nav-drawer {
+  display: none;
+  position: fixed; top: 58px; left: 0; right: 0;
+  background: rgba(8,8,8,0.97);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  z-index: 199;
+  padding: 1.5rem 6vw 2rem;
+  flex-direction: column; gap: 0;
+}
+.nav-drawer.open { display: flex; }
+.nav-drawer a {
+  color: var(--dim2); text-decoration: none;
+  font-size: .8rem; font-weight: 500;
+  letter-spacing: .12em; text-transform: uppercase;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border);
+  transition: color .2s;
+}
+.nav-drawer a:last-child { border-bottom: none; padding-bottom: 0; }
+.nav-drawer a:hover { color: var(--lime); }
+.nav-drawer .nd-hire {
+  margin-top: 1.2rem;
+  background: var(--lime); color: #000 !important;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1rem; letter-spacing: .1em;
+  padding: 12px 28px; text-align: center;
+  border-bottom: none !important;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 960px) {
+  .section { padding: 72px 6vw; }
+  .hero-bottom { grid-template-columns: 1fr; gap: 2rem; }
+  .hero-right { align-items: flex-start; }
+  .hero-btns { justify-content: flex-start; }
+  .hero-tags { justify-content: flex-start; }
+  .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .works-grid { grid-template-columns: 1fr 1fr; }
+  .wc-1,.wc-2,.wc-3,.wc-4 { grid-column: auto; }
+  .services-grid { grid-template-columns: 1fr 1fr; }
+  .exp-row { grid-template-columns: 180px 1fr; gap: 1.2rem; }
+  .exp-num { display: none; }
+  .exp-badge { display: none; }
+  .nav-links { display: none; }
+  .nav-burger { display: flex; }
+}
+
+@media (max-width: 640px) {
+  .section { padding: 60px 5vw; }
+  nav { padding: 0 5vw; }
+  h1 { font-size: clamp(64px, 19vw, 110px); }
+  .hero-bottom { padding: 2rem 0 3rem; gap: 1.8rem; }
+  .works-grid { grid-template-columns: 1fr; }
+  .wc-img { aspect-ratio: 4/3 !important; }
+  .stats-grid { grid-template-columns: 1fr 1fr; }
+  .services-grid { grid-template-columns: 1fr; }
+  .exp-row { grid-template-columns: 1fr; gap: .3rem; }
+  .exp-yr { font-size: .68rem; }
+  .section-top { flex-direction: column; align-items: flex-start; gap: .5rem; margin-bottom: 2.5rem; }
+  .s-count { display: none; }
+  .ct-big { font-size: clamp(52px, 16vw, 100px); }
+  .ct-links { flex-direction: column; align-items: stretch; }
+  .ct-link { justify-content: center; }
+  .ct-email { font-size: clamp(.85rem, 4vw, 1.1rem); word-break: break-all; }
+  footer { flex-direction: column; text-align: center; gap: .4rem; }
+  .hero-btns { flex-direction: column; align-items: flex-start; gap: .6rem; }
+  .btn-primary, .btn-secondary { width: 100%; text-align: center; }
+  .s-title { font-size: clamp(38px, 10vw, 64px); }
+  .svc-card { padding: 2rem 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <a href="#hero" class="nav-logo">YUSUF.M</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#works">Work</a></li>
+    <li><a href="#contact" class="nav-hire">Hire Me</a></li>
+  </ul>
+  <button class="nav-burger" id="burger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- mobile drawer -->
+<div class="nav-drawer" id="drawer">
+  <a href="#about" class="nd-link">About</a>
+  <a href="#experience" class="nd-link">Experience</a>
+  <a href="#works" class="nd-link">Work</a>
+  <a href="#services" class="nd-link">Services</a>
+  <a href="#contact" class="nd-hire">Hire Me</a>
+</div>
+
+<!-- ── HERO ── -->
+<section id="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-bg-word" aria-hidden="true">YUSUF</div>
+
+  <div class="hero-inner">
+    <div class="hero-avail">Available for freelance work</div>
+    <h1>
+      GRAPHIC<br/>
+      DESIG<span class="accent">N</span>ER.
+    </h1>
+    <div class="hero-bottom">
+      <p class="hero-desc">
+        Based in Indonesia, I create bold social media visuals, brand identities, and promotional designs that help brands stand out.
+      </p>
+      <div class="hero-right">
+        <div class="hero-btns">
+          <a href="#works" class="btn-primary">View My Work</a>
+          <a href="#contact" class="btn-secondary">Get In Touch</a>
+        </div>
+        <div class="hero-tags">
+          <span class="hero-tag-pill">Social Media Design</span>
+          <span class="hero-tag-pill">Poster Design</span>
+          <span class="hero-tag-pill">Brand Identity</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── MARQUEE ── -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span class="mq-item">Social Media Design</span><span class="mq-item mq-dot">✦</span>
+    <span class="mq-item">Brand Identity</span><span class="mq-item mq-dot">✦</span>
+    <span class="mq-item">Poster Design</span><span class="mq-item mq-dot">✦</span>
+    <span class="mq-item">Promotional Graphics</span><span class="mq-item mq-dot">✦</span>
+    <span class="mq-item">Art Direction</span><span class="mq-item mq-dot">✦</span>
+    <span class="mq-item">Visual Storytelling</span><span class="mq-item mq-dot">✦</span>
+    <span class="mq-item">Print Design</span><span class="mq-item mq-dot">✦</span>
+    <span class="mq-item">Social Media Design</span><span class="mq-item mq-dot">✦</span>
+    <span class="mq-item">Brand Identity</span><span class="mq-item mq-dot">✦</span>
+    <span class="mq-item">Poster Design</span><span class="mq-item mq-dot">✦</span>
+    <span class="mq-item">Promotional Graphics</span><span class="mq-item mq-dot">✦</span>
+    <span class="mq-item">Art Direction</span><span class="mq-item mq-dot">✦</span>
+    <span class="mq-item">Visual Storytelling</span><span class="mq-item mq-dot">✦</span>
+    <span class="mq-item">Print Design</span><span class="mq-item mq-dot">✦</span>
+  </div>
+</div>
+
+<!-- ── SELECTED WORKS ── -->
+<section id="works">
+  <div class="works-header">
+    <div class="section-top">
+      <div>
+        <div class="s-label">Portfolio</div>
+        <div class="s-title">Selected Works</div>
+      </div>
+      <div class="s-count">04</div>
+    </div>
+  </div>
+
+  <div class="works-grid">
+
+    <!-- Card 1 — wide left -->
+    <div class="work-card wc-1 reveal" data-img="warjon.jpg" data-title="Warjon" data-cat="Poster & Promo Design" data-year="2026">
+      <div class="wc-img-wrap">
+        <div class="wc-img p2">
+          <div class="wc-img-inner">
+            <div class="wc-placeholder-num">01</div>
+            <div class="wc-placeholder-hint">Replace with project image</div>
+          </div>
+        </div>
+        <div class="wc-hover"><span class="wc-hover-label">View Project</span></div>
+      </div>
+      <div class="wc-info">
+        <div class="wc-meta">
+          <div class="wc-cat">Poster & Promo Design</div>
+          <div class="wc-title">Warjon</div>
+        </div>
+        <div class="wc-year">2026</div>
+      </div>
+    </div>
+
+    <!-- Card 2 — right -->
+    <div class="work-card wc-2 reveal reveal-delay-1" data-img="anora.jpg" data-title="Anora Jakarta" data-cat="Social Media Design" data-year="2024">
+      <div class="wc-img-wrap">
+        <div class="wc-img p1">
+          <div class="wc-img-inner">
+            <div class="wc-placeholder-num">02</div>
+            <div class="wc-placeholder-hint">Replace with project image</div>
+          </div>
+        </div>
+        <div class="wc-hover"><span class="wc-hover-label">View Project</span></div>
+      </div>
+      <div class="wc-info">
+        <div class="wc-meta">
+          <div class="wc-cat">Social Media Design</div>
+          <div class="wc-title">Anora Jakarta</div>
+        </div>
+        <div class="wc-year">2024</div>
+      </div>
+    </div>
+
+    <!-- Card 3 — left bottom -->
+    <div class="work-card wc-3 reveal reveal-delay-1" data-img="nproject.jpg" data-title="nproject" data-cat="Graphic Design & Video" data-year="2023">
+      <div class="wc-img-wrap">
+        <div class="wc-img p3">
+          <div class="wc-img-inner">
+            <div class="wc-placeholder-num">03</div>
+            <div class="wc-placeholder-hint">Replace with project image</div>
+          </div>
+        </div>
+        <div class="wc-hover"><span class="wc-hover-label">View Project</span></div>
+      </div>
+      <div class="wc-info">
+        <div class="wc-meta">
+          <div class="wc-cat">Graphic Design & Video</div>
+          <div class="wc-title">nproject</div>
+        </div>
+        <div class="wc-year">2023</div>
+      </div>
+    </div>
+
+    <!-- Card 4 — wide right bottom -->
+    <div class="work-card wc-4 reveal reveal-delay-2" data-img="smcgroup.jpg" data-title="SMC Group" data-cat="Marketing Design" data-year="2021">
+      <div class="wc-img-wrap">
+        <div class="wc-img p4">
+          <div class="wc-img-inner">
+            <div class="wc-placeholder-num">04</div>
+            <div class="wc-placeholder-hint">Replace with project image</div>
+          </div>
+        </div>
+        <div class="wc-hover"><span class="wc-hover-label">View Project</span></div>
+      </div>
+      <div class="wc-info">
+        <div class="wc-meta">
+          <div class="wc-cat">Marketing Design</div>
+          <div class="wc-title">SMC Group</div>
+        </div>
+        <div class="wc-year">2021</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── ABOUT ── -->
+<section id="about" class="section">
+  <div class="section-top">
+    <div>
+      <div class="s-label">About</div>
+      <div class="s-title">Who I Am</div>
+    </div>
+  </div>
+  <div class="about-grid">
+    <div class="reveal">
+      <div class="about-text">
+        <p>I'm <strong>Yusuf Maulana</strong>, a Graphic Designer based in Jakarta, Indonesia, with over 4 years of experience in branding, apparel design, and social media content.</p>
+        <p>From daily social media visuals and promotional posters to full brand identities — I create designs that aren't just good-looking, they <strong>get results</strong>.</p>
+        <p>I've worked with F&amp;B brands, media companies, fashion labels, and marketing agencies. I understand what makes people stop scrolling — and I know how to design for that moment.</p>
+      </div>
+      <div class="about-quote">
+        <p>"Good design is visible. Great design is felt."</p>
+      </div>
+    </div>
+    <div class="reveal reveal-delay-1">
+      <div class="tools-label">Design Tools</div>
+      <div class="tools-chips">
+        <span class="tc">Illustrator</span>
+        <span class="tc">Photoshop</span>
+        <span class="tc">After Effects</span>
+        <span class="tc">Premiere Pro</span>
+        <span class="tc">CapCut</span>
+        <span class="tc">Canva</span>
+      </div>
+      <div class="tools-label">AI Tools</div>
+      <div class="tools-chips">
+        <span class="tc">ChatGPT</span>
+        <span class="tc">Claude</span>
+        <span class="tc">Higgsfield</span>
+        <span class="tc">Nano Banana</span>
+        <span class="tc">Codex</span>
+      </div>
+      <div class="tools-label">Other Skills</div>
+      <div class="tools-chips">
+        <span class="tc">Photography & Videography</span>
+        <span class="tc">Drone Pilot</span>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-cell"><div class="stat-n">4+</div><div class="stat-l">Years Active</div></div>
+        <div class="stat-cell"><div class="stat-n">5</div><div class="stat-l">Companies</div></div>
+        <div class="stat-cell"><div class="stat-n">6+</div><div class="stat-l">Brands Worked</div></div>
+        <div class="stat-cell"><div class="stat-n">∞</div><div class="stat-l">Ideas</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── EXPERIENCE ── -->
+<section id="experience" class="section">
+  <div class="section-top">
+    <div>
+      <div class="s-label">Career</div>
+      <div class="s-title">Experience</div>
+    </div>
+    <div class="s-count">5+</div>
+  </div>
+
+  <div class="exp-list">
+    <div class="exp-row reveal">
+      <div class="exp-num">01</div>
+      <div class="exp-yr">Freelance</div>
+      <div>
+        <div class="exp-co">Warjonusantara</div>
+        <div class="exp-role">Freelance Graphic Designer</div>
+        <p class="exp-desc">Freelance design work for Warjonusantara — poster, promotional materials, and visual content for their brand.</p>
+      </div>
+      <div class="exp-badge">Apparel · Freelance</div>
+    </div>
+    <div class="exp-row reveal">
+      <div class="exp-num">02</div>
+      <div class="exp-yr">Mar 2024<br/>Oct 2025</div>
+      <div>
+        <div class="exp-co">Anora Jakarta</div>
+        <div class="exp-role">Graphic Designer</div>
+        <p class="exp-desc">Daily promotional materials for social media, product design (cups, menus, uniforms), and full brand identity development for an F&amp;B brand.</p>
+      </div>
+      <div class="exp-badge">F&amp;B · Branding</div>
+    </div>
+
+    <div class="exp-row reveal">
+      <div class="exp-num">03</div>
+      <div class="exp-yr">Jan 2023<br/>Mar 2024</div>
+      <div>
+        <div class="exp-co">nproject</div>
+        <div class="exp-role">Graphic Designer &amp; Video Editor</div>
+        <p class="exp-desc">Logos and design assets for programs at Garuda TV. Video editing for the "Bantu Sekolah" educational program.</p>
+      </div>
+      <div class="exp-badge">Media · TV</div>
+    </div>
+
+    <div class="exp-row reveal">
+      <div class="exp-num">04</div>
+      <div class="exp-yr">Aug 2021<br/>Oct 2022</div>
+      <div>
+        <div class="exp-co">SMC Group</div>
+        <div class="exp-role">Graphic Designer</div>
+        <p class="exp-desc">Design for company marketing needs covering digital and print formats.</p>
+      </div>
+      <div class="exp-badge">Marketing</div>
+    </div>
+
+    <div class="exp-row reveal">
+      <div class="exp-num">05</div>
+      <div class="exp-yr">May 2019<br/>Mar 2021</div>
+      <div>
+        <div class="exp-co">Sekilas Kembali</div>
+        <div class="exp-role">Graphic Designer</div>
+        <p class="exp-desc">Designs for shirts, pants, tops, and accessories for a local streetwear brand.</p>
+      </div>
+      <div class="exp-badge">Fashion</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SERVICES ── -->
+<section id="services" class="section">
+  <div class="section-top">
+    <div>
+      <div class="s-label">What I Do</div>
+      <div class="s-title">Services</div>
+    </div>
+  </div>
+  <div class="services-grid">
+
+    <div class="svc-card reveal">
+      <div class="svc-num">01</div>
+      <div class="svc-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="5" y="2" width="14" height="20" rx="2"/>
+          <line x1="12" y1="18" x2="12.01" y2="18"/>
+        </svg>
+      </div>
+      <div class="svc-title">Social Media Design</div>
+      <p class="svc-desc">Scroll-stopping visuals for feeds, stories, and reels. Designed to build engagement and reinforce your brand every single day.</p>
+      <ul class="svc-list">
+        <li>Feed & Stories Templates</li>
+        <li>Reels Cover Design</li>
+        <li>Campaign Graphics</li>
+        <li>Content Calendar Visuals</li>
+      </ul>
+    </div>
+
+    <div class="svc-card reveal reveal-delay-1">
+      <div class="svc-num">02</div>
+      <div class="svc-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2L9.5 9.5 2 12l7.5 2.5L12 22l2.5-7.5L22 12l-7.5-2.5z"/>
+        </svg>
+      </div>
+      <div class="svc-title">Brand Identity</div>
+      <p class="svc-desc">From logo to full visual system — I build brand identities that are cohesive, memorable, and built to last.</p>
+      <ul class="svc-list">
+        <li>Logo Design</li>
+        <li>Color & Typography System</li>
+        <li>Brand Guidelines</li>
+        <li>Brand Collateral</li>
+      </ul>
+    </div>
+
+    <div class="svc-card reveal reveal-delay-2">
+      <div class="svc-num">03</div>
+      <div class="svc-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5z"/>
+          <polyline points="14 2 14 8 20 8"/>
+          <line x1="8" y1="13" x2="16" y2="13"/>
+          <line x1="8" y1="17" x2="13" y2="17"/>
+        </svg>
+      </div>
+      <div class="svc-title">Poster & Print Design</div>
+      <p class="svc-desc">Bold promotional designs for events, campaigns, and print. Made to grab attention and communicate clearly.</p>
+      <ul class="svc-list">
+        <li>Event Posters</li>
+        <li>Promotional Flyers</li>
+        <li>Merchandise Design</li>
+        <li>Print-Ready Files</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section id="contact" class="section">
+  <div class="s-label" style="display:flex;justify-content:center;margin-bottom:1.2rem">Let's Talk</div>
+  <div class="ct-big">GOT A<br/>PROJECT<span class="accent">?</span></div>
+  <p class="ct-sub">Open for branding, social media, poster, and design work. Let's make something worth looking at.</p>
+  <a href="mailto:yusuf23796@gmail.com" class="ct-email">yusuf23796@gmail.com</a>
+  <div class="ct-links">
+    <a href="mailto:yusuf23796@gmail.com" class="ct-link">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="4" width="20" height="16" rx="2"/>
+        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+      </svg>
+      yusuf23796@gmail.com
+    </a>
+    <a href="https://wa.me/6285694742301" target="_blank" class="ct-link">
+      <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+        <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.117 1.528 5.845L.057 23.882l6.234-1.634A11.944 11.944 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.9 0-3.67-.523-5.184-1.43l-.371-.221-3.844 1.008 1.027-3.745-.242-.386A9.96 9.96 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+      </svg>
+      +62 856 9474 2301
+    </a>
+    <a href="https://instagram.com/nahkanoff" target="_blank" class="ct-link">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+      </svg>
+      @nahkanoff
+    </a>
+  </div>
+</section>
+
+<!-- ── LIGHTBOX ── -->
+<div id="lightbox">
+  <div class="lb-box">
+    <button class="lb-close" id="lb-close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+      Close
+    </button>
+    <img class="lb-img" id="lb-img" src="" alt="" style="display:none"/>
+    <div class="lb-placeholder" id="lb-placeholder">No image yet</div>
+    <div class="lb-footer">
+      <div>
+        <div class="lb-cat" id="lb-cat"></div>
+        <div class="lb-title" id="lb-title"></div>
+      </div>
+      <div class="lb-year" id="lb-year"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <p>© 2026 <span>YUSUF.M</span>. All rights reserved.</p>
+  <p>Jakarta, Indonesia &nbsp;·&nbsp; Graphic Designer</p>
+</footer>
+
+<script>
+  // Scroll reveal
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Lightbox
+  const lb = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lb-img');
+  const lbPh = document.getElementById('lb-placeholder');
+  const lbCat = document.getElementById('lb-cat');
+  const lbTitle = document.getElementById('lb-title');
+  const lbYear = document.getElementById('lb-year');
+
+  function openLightbox(card) {
+    const img = card.dataset.img;
+    lbCat.textContent = card.dataset.cat;
+    lbTitle.textContent = card.dataset.title;
+    lbYear.textContent = card.dataset.year;
+
+    // Try loading the image
+    lbImg.style.display = 'none';
+    lbPh.style.display = 'flex';
+    const testImg = new Image();
+    testImg.onload = () => {
+      lbImg.src = img;
+      lbImg.alt = card.dataset.title;
+      lbImg.style.display = 'block';
+      lbPh.style.display = 'none';
+    };
+    testImg.onerror = () => {
+      lbPh.textContent = 'Image coming soon — ' + card.dataset.title;
+    };
+    testImg.src = img;
+
+    lb.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lb.classList.remove('active');
+    document.body.style.overflow = '';
+    setTimeout(() => { lbImg.src = ''; }, 350);
+  }
+
+  document.querySelectorAll('.work-card').forEach(card => {
+    card.addEventListener('click', () => openLightbox(card));
+  });
+  document.getElementById('lb-close').addEventListener('click', closeLightbox);
+  lb.addEventListener('click', e => { if (e.target === lb) closeLightbox(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+  // Hamburger menu
+  const burger = document.getElementById('burger');
+  const drawer = document.getElementById('drawer');
+  burger.addEventListener('click', () => {
+    burger.classList.toggle('open');
+    drawer.classList.toggle('open');
+    document.body.style.overflow = drawer.classList.contains('open') ? 'hidden' : '';
+  });
+  // Close drawer when a link is clicked
+  drawer.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      burger.classList.remove('open');
+      drawer.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+</script>
+</body>
+</html>
