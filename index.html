@@ -538,6 +538,13 @@ h1 .accent { color: var(--lime); }
 }
 .lb-year {
   font-size: .72rem; color: var(--dim); letter-spacing: .06em;
+  flex-shrink: 0; padding-left: 1.5rem;
+}
+.lb-desc {
+  font-size: .84rem; color: var(--dim2);
+  line-height: 1.78; margin-top: .8rem;
+  padding-top: .8rem;
+  border-top: 1px solid var(--border);
 }
 .lb-close {
   position: absolute; top: -44px; right: 0;
@@ -749,7 +756,7 @@ footer span { color: var(--lime); }
   <div class="works-grid">
 
     <!-- Card 1 — wide left -->
-    <div class="work-card wc-1 reveal" data-img="warjon.jpg" data-title="Warjon" data-cat="Poster & Promo Design" data-year="2026">
+    <div class="work-card wc-1 reveal" data-img="warjon.jpg" data-title="Warjon" data-cat="Poster & Promo Design" data-year="2026" data-desc="Poster and promotional design for Warjonusantara, a popular Indonesian F&amp;B chain. Covers event posters, discount promos, seasonal campaigns, and social media visuals — all designed to be bold, eye-catching, and on-brand.">
       <div class="wc-img-wrap">
         <img class="wc-img" src="warjon.jpg" alt="Warjon"/>
         <div class="wc-hover"><span class="wc-hover-label">View Project</span></div>
@@ -764,7 +771,7 @@ footer span { color: var(--lime); }
     </div>
 
     <!-- Card 2 — right -->
-    <div class="work-card wc-2 reveal reveal-delay-1" data-img="anora.jpg" data-title="Anora Jakarta" data-cat="Social Media Design" data-year="2024">
+    <div class="work-card wc-2 reveal reveal-delay-1" data-img="anora.jpg" data-title="Anora Jakarta" data-cat="Social Media Design" data-year="2024" data-desc="Daily social media content and promotional design for Anora Jakarta, an F&amp;B brand. Work includes event posters, promo flyers, menu visuals, and campaign graphics — designed to drive engagement and keep the brand active across platforms.">
       <div class="wc-img-wrap">
         <img class="wc-img" src="anora.jpg" alt="Anora Jakarta"/>
         <div class="wc-hover"><span class="wc-hover-label">View Project</span></div>
@@ -779,7 +786,7 @@ footer span { color: var(--lime); }
     </div>
 
     <!-- Card 3 — left bottom -->
-    <div class="work-card wc-3 reveal reveal-delay-1" data-img="nproject.jpg" data-title="nproject" data-cat="Graphic Design & Video" data-year="2023">
+    <div class="work-card wc-3 reveal reveal-delay-1" data-img="nproject.jpg" data-title="nproject" data-cat="Graphic Design & Video" data-year="2023" data-desc="Logo design and visual assets for multiple programs at Garuda TV, including Bantu Sekolah and Adu Cerdas. Also handled video editing and motion graphics to support educational and entertainment content production.">
       <div class="wc-img-wrap">
         <img class="wc-img" src="nproject.jpg" alt="nproject"/>
         <div class="wc-hover"><span class="wc-hover-label">View Project</span></div>
@@ -794,7 +801,7 @@ footer span { color: var(--lime); }
     </div>
 
     <!-- Card 4 — wide right bottom -->
-    <div class="work-card wc-4 reveal reveal-delay-2" data-img="smcgroup.jpg" data-title="SMC Group" data-cat="Marketing Design" data-year="2021">
+    <div class="work-card wc-4 reveal reveal-delay-2" data-img="smcgroup.jpg" data-title="SMC Group" data-cat="Marketing Design" data-year="2021" data-desc="Marketing and promotional design for SMC Group, covering travel and umrah packages. Produced print-ready posters, digital ads, and brochures — designed to communicate complex package info clearly while staying visually compelling.">
       <div class="wc-img-wrap">
         <img class="wc-img" src="smcgroup.jpg" alt="SMC Group"/>
         <div class="wc-hover"><span class="wc-hover-label">View Project</span></div>
@@ -1047,6 +1054,7 @@ footer span { color: var(--lime); }
       </div>
       <div class="lb-year" id="lb-year"></div>
     </div>
+    <p class="lb-desc" id="lb-desc"></p>
   </div>
 </div>
 
@@ -1070,12 +1078,14 @@ footer span { color: var(--lime); }
   const lbCat = document.getElementById('lb-cat');
   const lbTitle = document.getElementById('lb-title');
   const lbYear = document.getElementById('lb-year');
+  const lbDesc = document.getElementById('lb-desc');
 
   function openLightbox(card) {
     const img = card.dataset.img;
     lbCat.textContent = card.dataset.cat;
     lbTitle.textContent = card.dataset.title;
     lbYear.textContent = card.dataset.year;
+    lbDesc.textContent = card.dataset.desc || '';
 
     // Try loading the image
     lbImg.style.display = 'none';
