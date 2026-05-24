@@ -645,7 +645,13 @@ footer span { color: var(--lime); }
   .section { padding: 60px 5vw; }
   nav { padding: 0 5vw; }
   h1 { font-size: clamp(64px, 19vw, 110px); }
-  .hero-bottom { padding: 2rem 0 3rem; gap: 1.8rem; }
+  #hero {
+    min-height: auto;
+    justify-content: flex-start;
+    padding-top: calc(58px + 2.5rem);
+    padding-bottom: 3rem;
+  }
+  .hero-bottom { padding: 1.5rem 0 0; gap: 1.8rem; }
   .works-grid { grid-template-columns: 1fr; }
   .wc-img { aspect-ratio: 4/3 !important; }
   .stats-grid { grid-template-columns: 1fr 1fr 1fr; }
